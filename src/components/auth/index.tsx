@@ -221,7 +221,7 @@ const Auth: React.FC<IProps> = props => {
         <Button
           isLoading={isSubmitting}
           type="submit"
-          colorScheme="blue"
+          colorScheme="green"
           color="white"
           width="100%"
         >
@@ -234,7 +234,7 @@ const Auth: React.FC<IProps> = props => {
             setIsSigningUp(!isSigningUp);
           }}
           isDisabled={isSubmitting}
-          colorScheme="blue"
+          colorScheme="green"
           variant="outline"
         >
           {isSigningUp ? 'Entrar' : 'Cadastrar'}
@@ -286,7 +286,7 @@ const Auth: React.FC<IProps> = props => {
                 isLoading={resetPasswordIsSubmitting}
                 type="submit"
                 color="white"
-                colorScheme="blue"
+                colorScheme="green"
               >
                 Recuperar senha
               </Button>

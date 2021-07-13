@@ -37,7 +37,7 @@ const VerifyEmail: React.FC = () => {
         <Text>Verifique seu email para continuar.</Text>
 
         <Button
-          colorScheme="blue"
+          colorScheme="green"
           onClick={() => {
             window.location.reload();
           }}
@@ -45,11 +45,11 @@ const VerifyEmail: React.FC = () => {
           Já verifiquei
         </Button>
 
-        <Button colorScheme="blue" variant="outline" onClick={sendAgain}>
+        <Button colorScheme="green" variant="outline" onClick={sendAgain}>
           Enviar email novamente
         </Button>
 
-        <Button colorScheme="blue" variant="ghost" onClick={signOut}>
+        <Button colorScheme="green" variant="ghost" onClick={signOut}>
           Trocar de conta
         </Button>
       </Stack>
