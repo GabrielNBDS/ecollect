@@ -1,9 +1,8 @@
-import { Container, Flex, Spinner, Text } from '@chakra-ui/react';
+import { Flex, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import Auth from '.';
 
 import { useAuth } from '../../hooks/auth';
-import VerifyEmail from './VerifyEmail';
 
 const withAuth = (Component: React.FC) => (): JSX.Element => {
   const { user } = useAuth();
@@ -35,24 +34,12 @@ const withAuth = (Component: React.FC) => (): JSX.Element => {
   }
 
   if (shouldLogin) {
-    return (
-      <Container>
-        <Text fontWeight="600" fontSize={24} textAlign="center" py={8}>
-          Faça login para continuar
-        </Text>
-        <Auth onSignInOrSignUp={() => setShouldLogin(false)} />
-      </Container>
-    );
+    return <Auth />;
   }
 
-  // if is not loading and email is verified returns the component
-  if (user?.emailVerified) {
+  // if is not loading returns the component
+  if (!isLoading && !shouldLogin) {
     return <Component />;
-  }
-
-  // if is not loading and email is not verified asks to verify
-  if (user && !user?.emailVerified) {
-    return <VerifyEmail />;
   }
 
   return (

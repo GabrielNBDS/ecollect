@@ -10,12 +10,7 @@ import firebase from '../lib/firebase';
 
 interface AuthContextData {
   user: firebase.default.User;
-  signUpWithEmailAndPassword(
-    name: string,
-    email: string,
-    password: string,
-  ): Promise<void>;
-  signInWithEmailAndPassword(email: string, password: string): Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   signOut(): Promise<void>;
 }
 
@@ -24,27 +19,10 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<firebase.default.User | null>(null);
 
-  const signUpWithEmailAndPassword = useCallback(
-    async (name, email, password) => {
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
-
-      const createdUser = firebase.auth().currentUser;
-
-      createdUser
-        .updateProfile({
-          displayName: name,
-        })
-        .then(() => {
-          createdUser.sendEmailVerification();
-        });
-    },
-    [],
-  );
-
-  const signInWithEmailAndPassword = useCallback(async (email, password) => {
+  const signInWithGoogle = useCallback(async () => {
     const response = await firebase
       .auth()
-      .signInWithEmailAndPassword(email, password);
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
     setUser(response.user);
   }, []);
@@ -72,8 +50,7 @@ const AuthProvider: React.FC = ({ children }) => {
     <AuthContext.Provider
       value={{
         user,
-        signUpWithEmailAndPassword,
-        signInWithEmailAndPassword,
+        signInWithGoogle,
         signOut,
       }}
     >
