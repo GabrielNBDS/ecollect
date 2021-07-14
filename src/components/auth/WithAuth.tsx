@@ -38,7 +38,7 @@ const withAuth = (Component: React.FC) => (): JSX.Element => {
   }
 
   // if is not loading returns the component
-  if (!isLoading && !shouldLogin) {
+  if (!isLoading && !shouldLogin && user) {
     return <Component />;
   }
 
