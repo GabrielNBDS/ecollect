@@ -20,6 +20,7 @@ const SplitScreen: React.FC = () => {
           <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
             <Text
               as="span"
+              color="#322153"
               position="relative"
               _after={{
                 content: "''",
