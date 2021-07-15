@@ -1,5 +1,12 @@
 import React from 'react';
-import { Icon, Image, Container, Flex, IconButton } from '@chakra-ui/react';
+import {
+  Icon,
+  Image,
+  Container,
+  Flex,
+  IconButton,
+  Link,
+} from '@chakra-ui/react';
 import { FiPower } from 'react-icons/fi';
 
 import { useAuth } from '../hooks/auth';
@@ -15,7 +22,9 @@ const Header: React.FC = () => {
         justifyContent="space-between"
         maxW="1200px"
       >
-        <Image h={['40px']} src="/assets/logo.svg" />
+        <Link href="/">
+          <Image h={['40px']} src="/assets/logo.svg" />
+        </Link>
 
         <IconButton
           onClick={signOut}
