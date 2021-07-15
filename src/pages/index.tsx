@@ -67,7 +67,11 @@ const SplitScreen: React.FC = () => {
         </Stack>
       </Flex>
       <Flex display={['none', 'none', 'flex']} maxH="100vh" flex={1}>
-        <Image alt="Login Image" objectFit="cover" src="/assets/hero.jpg" />
+        <Image
+          alt="Ecollect point example"
+          objectFit="cover"
+          src="/assets/hero.jpg"
+        />
       </Flex>
     </Stack>
   );
