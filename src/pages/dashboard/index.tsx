@@ -1,16 +1,30 @@
+import { Box, Container, Stack } from '@chakra-ui/react';
 import React from 'react';
-import { Button, Heading, Text } from '@chakra-ui/react';
-import { useAuth } from '../../hooks/auth';
 import withAuth from '../../components/auth/WithAuth';
+import Header from '../../components/Header';
+import AddPoint from './_AddPoint';
+import PointsList from './_PointsList';
 
 const Dashboard: React.FC = () => {
-  const { user, signOut } = useAuth();
-
   return (
     <>
-      <Heading>{user?.displayName}</Heading>
-      <Text>{user?.email}</Text>
-      <Button onClick={signOut}>Sign Out</Button>
+      <Header />
+
+      <Box minH="calc(100vh - 70px)">
+        <Container maxW="1200px">
+          <Stack
+            pt={8}
+            pb={16}
+            mx="auto"
+            align={['center', 'center', 'flex-start']}
+            direction={['column', 'column', 'row']}
+          >
+            <PointsList />
+
+            <AddPoint />
+          </Stack>
+        </Container>
+      </Box>
     </>
   );
 };
