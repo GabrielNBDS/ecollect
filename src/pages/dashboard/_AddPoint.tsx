@@ -9,7 +9,6 @@ import {
   FormControl,
   FormLabel,
   Icon,
-  IconButton,
   Input,
   Text,
   theme,
@@ -26,6 +25,7 @@ import onFileChange from '../../utils/onFileChange';
 import Map from './_Map';
 import getFileFromBlob from '../../utils/getFileFromBlob';
 import { cdn, db } from '../../lib/firebase';
+import { useAuth } from '../../hooks/auth';
 
 interface IFormData {
   name: string;
@@ -36,6 +36,7 @@ const Create: React.FC = () => {
   const [image, setImage] = useState('');
   const [isUploading, setIsUploading] = useState(false);
 
+  const { user } = useAuth();
   const toast = useToast();
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +81,7 @@ const Create: React.FC = () => {
             imagePath: ref.fullPath,
             center,
             markerPos,
+            ownerId: user.uid,
           });
 
           setImage('');
