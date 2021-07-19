@@ -11,7 +11,7 @@ const PointsList: React.FC = () => {
   const { data: points, loading: pointsLoading } = useCollection<IPoint>(
     'points',
     {
-      where: ['ownerId', '==', user.uid],
+      where: ['ownerId', '==', user?.uid],
       listen: true,
     },
   );
