@@ -44,6 +44,7 @@
     "array-callback-return": "off",
     "consistent-return": "off",
     "implicit-arrow-linebreak": "off",
-    "jsx-a11y/iframe-has-title": "off"
+    "jsx-a11y/iframe-has-title": "off",
+    "operator-linebreak": "off"
   }
 }
