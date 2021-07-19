@@ -24,7 +24,7 @@ import onFileChange from '../../utils/onFileChange';
 
 import Map from './_Map';
 import getFileFromBlob from '../../utils/getFileFromBlob';
-import { cdn, db } from '../../lib/firebase';
+import fire, { cdn, db } from '../../lib/firebase';
 import { useAuth } from '../../hooks/auth';
 
 interface IFormData {
@@ -79,8 +79,8 @@ const Create: React.FC = () => {
             ...data,
             image: url,
             imagePath: ref.fullPath,
-            center,
-            markerPos,
+            center: new fire.firestore.GeoPoint(center[0], center[1]),
+            markerPos: new fire.firestore.GeoPoint(markerPos[0], markerPos[1]),
             ownerId: user.uid,
           });
 
