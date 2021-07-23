@@ -5,7 +5,6 @@ import { AppProps } from 'next/app';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { FuegoProvider } from '@nandorojo/swr-firestore';
 
-import Head from 'next/head';
 import Fuego from '../lib/swr-firestore';
 import myTheme from '../styles/theme';
 import AppProvider from '../hooks';
@@ -43,15 +42,6 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     <AppProvider>
       <FuegoProvider fuego={fuego}>
         <ChakraProvider theme={theme}>
-          <Head>
-            <title>Ecollect</title>
-            <meta property="og:image:image" content="/assets/logo.png" />
-            <meta property="og:image:secure_url" content="/assets/logo.png" />
-            <meta property="og:image:alt" content="Thumbnail" />
-            <meta property="og:image:type" content="image/png" />
-            <meta property="og:image:width" content="195px" />
-            <meta property="og:image:height" content="44px" />
-          </Head>
           <Component {...pageProps} />
         </ChakraProvider>
       </FuegoProvider>

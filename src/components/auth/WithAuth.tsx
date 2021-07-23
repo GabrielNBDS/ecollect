@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Auth from '.';
 
 import { useAuth } from '../../hooks/auth';
+import SEO from '../SEO';
 
 const withAuth = (Component: React.FC) => (): JSX.Element => {
   const { user } = useAuth();
@@ -43,9 +44,13 @@ const withAuth = (Component: React.FC) => (): JSX.Element => {
   }
 
   return (
-    <Flex height="10vh" align="center" justify="center">
-      <Spinner />
-    </Flex>
+    <>
+      <SEO title="Login" />
+
+      <Flex height="10vh" align="center" justify="center">
+        <Spinner />
+      </Flex>
+    </>
   );
 };
 

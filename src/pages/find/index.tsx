@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useCollection } from '@nandorojo/swr-firestore';
 import React, { useState } from 'react';
+import SEO from '../../components/SEO';
 import IPoint from '../../interfaces/point';
 
 import Map from './_Map';
@@ -31,6 +32,8 @@ const Find = (): JSX.Element => {
 
   return (
     <>
+      <SEO title="Find points" description="Find recycling points near your." />
+
       <Box w="100vw" h="100vh">
         <Map center={center} setCenter={setCenter}>
           {!pointsLoading &&
